@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'http://localhost:8080/api/v1/',
+    baseURL: 'https://glacial-hamlet-11912.herokuapp.com/',
     headers: {
         'content-type': 'application/json',
         'Access-Control-Allow-Origin' : '*',
