@@ -19,16 +19,14 @@
             v-model="form.user.name"
             label="Nombres"
             color="accent"
-            type="text"
             outlined
-            :rules="[rules.required]"
+            :rules="rules.name"
         ></v-text-field>
 
         <v-text-field
             v-model="form.user.lastName"
             label="Apellidos"
             color="accent"
-            type="text"
             outlined
             :rules="[rules.required]"
         ></v-text-field>
@@ -126,6 +124,10 @@ export default {
       },
       rules: {
         required: v => !!v || "Requerido",
+        name: [
+         v => !!v || "Requerido",
+         v => [A-Za-z ] || 'Solo ingrese letras'
+        ],
         email: [
           v => !!v || "Requerido",
           v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'Correo inválido.'
