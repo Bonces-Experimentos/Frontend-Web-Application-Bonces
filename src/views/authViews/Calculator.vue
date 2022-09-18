@@ -5,7 +5,19 @@
         v-model="form.isValid"
     >
       <v-container fluid>
-        <h1 class="text-left mb-10">Ingreso de Datos</h1>
+
+        <v-col class="col-12 col-sm-8 col-md-5 mx-auto flex">
+          <h1 class="text-left mb-10">Ingreso de Datos</h1>
+            <v-row>
+              <v-col cols="8">
+                <a>
+                  Leyenda de Datos
+                <embed src ="../../assets/Leyenda-de-Datos.pdf" type="application/pdf"/>
+              </a>
+              </v-col>
+
+              </v-row>
+         </v-col>
         <v-row>
           <v-col class="col-12 col-sm-8 col-md-5 mx-auto flex">
             <h2 class="text-center mb-10"><span>Datos del Bono</span></h2>
