@@ -28,7 +28,7 @@
             label="Apellidos"
             color="accent"
             outlined
-            :rules="[rules.required]"
+            :rules="rules.lastName"
         ></v-text-field>
 
         <v-text-field
@@ -125,6 +125,13 @@ export default {
       rules: {
         required: v => !!v || "Requerido",
         name: [
+         v => !!v || "Requerido",
+         v => (v && v.length >= 2) || 'Ingrese más de un caracter',
+         v => /^([a-zA-Z])*$/.test(v) || 'Solo ingrese letras'
+        ],
+        lastName:[
+         v => !!v || "Requerido",
+         v => (v && v.length >= 2) || 'Ingrese más de un caracter',
          v => /^([a-zA-Z])*$/.test(v) || 'Solo ingrese letras'
         ],
         email: [
