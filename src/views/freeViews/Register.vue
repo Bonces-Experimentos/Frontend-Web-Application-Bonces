@@ -19,6 +19,7 @@
             v-model="form.user.name"
             label="Nombres"
             color="accent"
+            type="text"
             outlined
             :rules="[rules.required]"
         ></v-text-field>
@@ -27,6 +28,7 @@
             v-model="form.user.lastName"
             label="Apellidos"
             color="accent"
+            type="text"
             outlined
             :rules="[rules.required]"
         ></v-text-field>
