@@ -5,9 +5,10 @@
         v-model="form.isValid"
     >
       <v-container fluid>
-
+        <v-row>
+          <v-col cols="4">
         <h1 class="text-left mb-10">Ingreso de Datos</h1>
-      <v-row>
+      </v-col>
         <v-col cols="8">
           <a
                   href="https://drive.google.com/file/d/1b7S0HK7Tw9B-v95KiHAr1kgPuLcwwBbJ/view"
