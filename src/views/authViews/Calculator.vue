@@ -7,9 +7,9 @@
       <v-container fluid>
 
         <h1 class="text-left mb-10">Ingreso de Datos</h1>
-        <v-col cols="4">
+        <v-col cols="12">
           <a
-                  href="https://drive.google.com/drive/my-drive"
+                  href="https://drive.google.com/file/d/1b7S0HK7Tw9B-v95KiHAr1kgPuLcwwBbJ/view"
                   target="_blank"
                   class="secondary--text blue-grey lighten-5 flex text-center"
                   style="width: auto"
