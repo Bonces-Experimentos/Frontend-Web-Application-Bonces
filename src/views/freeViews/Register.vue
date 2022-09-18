@@ -125,7 +125,7 @@ export default {
       rules: {
         required: v => !!v || "Requerido",
         name: [
-         v => /^([0-9])*$/.test(v) || 'Solo ingrese letras'
+         v => /^([a-zA-Z])*$/.test(v) || 'Solo ingrese letras'
         ],
         email: [
           v => !!v || "Requerido",
