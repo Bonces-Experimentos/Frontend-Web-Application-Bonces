@@ -9,7 +9,7 @@
           <v-col cols="4">
         <h1 class="text-left mb-10">Ingreso de Datos</h1>
       </v-col>
-        <v-col cols="8">
+        <v-col cols="24">
           <a
                   href="https://drive.google.com/file/d/1b7S0HK7Tw9B-v95KiHAr1kgPuLcwwBbJ/view"
                   target="_blank"
