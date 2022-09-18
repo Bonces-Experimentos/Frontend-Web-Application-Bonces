@@ -6,18 +6,17 @@
     >
       <v-container fluid>
 
-        <v-col class="col-12 col-sm-8 col-md-5 mx-auto flex">
-          <h1 class="text-left mb-10">Ingreso de Datos</h1>
-            <v-row>
-              <v-col cols="8">
-                <a>
-                  Leyenda de Datos
-                <embed src ="../../assets/Leyenda-de-Datos.pdf" type="application/pdf"/>
+        <h1 class="text-left mb-10">Ingreso de Datos</h1>
+        <v-col cols="4">
+          <a
+                  href="https://drive.google.com/drive/my-drive"
+                  target="_blank"
+                  class="secondary--text blue-grey lighten-5 flex text-center"
+                  style="width: auto"
+              >
+                Leyenda de Datos
               </a>
-              </v-col>
-
-              </v-row>
-         </v-col>
+        </v-col>
         <v-row>
           <v-col class="col-12 col-sm-8 col-md-5 mx-auto flex">
             <h2 class="text-center mb-10"><span>Datos del Bono</span></h2>
