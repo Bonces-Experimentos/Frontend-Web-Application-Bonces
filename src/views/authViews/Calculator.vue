@@ -5,11 +5,10 @@
         v-model="form.isValid"
     >
       <v-container fluid>
-        <v-row>
-          <v-col cols="4">
+          <v-col cols="12" sm="8">
         <h1 class="text-left mb-10">Ingreso de Datos</h1>
       </v-col>
-      <v-col class="col-12 col-sm-8 col-md-5 mx-auto flex">
+      <v-col cols="12" sm="8">
           <a
                   href="https://drive.google.com/file/d/1b7S0HK7Tw9B-v95KiHAr1kgPuLcwwBbJ/view"
                   target="_blank"
@@ -19,7 +18,6 @@
                 Leyenda de Datos
               </a>
         </v-col>
-      </v-row>
         <v-row>
           <v-col class="col-12 col-sm-8 col-md-5 mx-auto flex">
             <h2 class="text-center mb-10"><span>Datos del Bono</span></h2>
