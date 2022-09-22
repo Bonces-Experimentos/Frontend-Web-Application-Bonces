@@ -128,7 +128,7 @@ export default {
          v => !!v || "Requerido",
          v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
          v => (v && v.length >= 2) || 'Ingrese más de un caracter',
-         v => /^([a-zA-Z])\s*$/.test(v) || 'Solo ingrese letras'
+         v => /^([a-zA-Z])*$\s/.test(v) || 'Solo ingrese letras'
         ],
         lastName:[
          v => !!v || "Requerido",
