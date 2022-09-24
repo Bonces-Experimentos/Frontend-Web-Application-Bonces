@@ -846,18 +846,12 @@
           <v-card-title>
             Cronograma
             <v-spacer></v-spacer>
-            <v-text-field
-                v-model="quotasData.search"
-                append-icon="mdi-magnify"
-                label="Buscar"
-                single-line
-                hide-details
-            ></v-text-field>
+        
           </v-card-title>
           <v-data-table
               :headers="quotasData.headers"
               :items="quotasData.quotas"
-              :search="quotasData.search"
+              
               :sort-by.sync="quotasData.sortBy"
               :sort-desc.sync="quotasData.sortDesc"
           ></v-data-table>
@@ -972,7 +966,6 @@ export default {
         quotas: Object
       },
       quotasData: {
-        search: '',
         sortBy: 'numberOfQuota',
         sortDesc: false,
         headers: [
