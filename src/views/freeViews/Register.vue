@@ -88,7 +88,7 @@
           :timeout="timeout"
           color="red accent-2"
       >
-        {{ "Error: información invalida" }}
+        {{ "Error: El correo ya existe" }}
 
         <template v-slot:action="{ attrs }">
           <v-btn
