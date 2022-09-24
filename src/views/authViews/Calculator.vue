@@ -12,8 +12,7 @@
           <a
                   href="https://drive.google.com/file/d/1b7S0HK7Tw9B-v95KiHAr1kgPuLcwwBbJ/view"
                   target="_blank"
-                  class="secondary--text blue-grey lighten-5 flex text-end"
-                  style="width: auto"
+                  class="mx-auto mx-md-0 ml-md-auto"
               >
                 Leyenda de Datos
               </a>
