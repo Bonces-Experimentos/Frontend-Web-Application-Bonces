@@ -88,7 +88,7 @@
           :timeout="timeout"
           color="red accent-2"
       >
-        {{ "Error: El correo ya existe" }}
+        {{ "Error: El nombre y apellido o correo ya se encuentran registrados" }}
 
         <template v-slot:action="{ attrs }">
           <v-btn
