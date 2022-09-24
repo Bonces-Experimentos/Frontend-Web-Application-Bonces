@@ -16,6 +16,7 @@
               <v-text-field
                   v-model="user.name"
                   solo
+                  :rules="rules.name"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -27,6 +28,7 @@
               <v-text-field
                   v-model="user.lastName"
                   solo
+                  :rules="rules.lastName"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -38,6 +40,7 @@
               <v-text-field
                   v-model="user.email"
                   solo
+                  :rules="rules.email"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -140,6 +143,34 @@ export default {
       isEdit: false,
       timeout: 3000,
       successfulUpdate: false,
+      form: {
+        user: {
+          name: "",
+          lastName: "",
+          email: "",
+        },
+        isValid: false,
+        showPassword: false
+      },
+      rules: {
+        required: v => !!v || "Requerido",
+        name: [
+         v => !!v || "Requerido",
+         v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
+         v => (v && v.length >= 2) || 'Ingrese más de un caracter',
+         v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras'
+        ],
+        lastName:[
+         v => !!v || "Requerido",
+         v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
+         v => (v && v.length >= 2) || 'Ingrese más de un caracter',
+         v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras'
+        ],
+        email: [
+          v => !!v || "Requerido",
+          v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'Correo inválido.'
+        ],
+      },
     }
   },
   methods: {
