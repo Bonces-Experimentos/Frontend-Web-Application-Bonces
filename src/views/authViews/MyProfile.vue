@@ -115,7 +115,7 @@
         color="primary"
         content-class="accent--text"
     >
-      {{ "Actualización de datos existosa" }}
+      {{ "Actualización de datos exitosa" }}
 
       <template v-slot:action="{ attrs }">
         <v-btn
