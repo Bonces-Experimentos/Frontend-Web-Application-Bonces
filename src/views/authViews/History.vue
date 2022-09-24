@@ -363,13 +363,6 @@
       </v-row>
       <v-row class="col-12 flex-column flex-md-row">
         <v-btn
-            class="mx-auto mx-md-0 ml-md-auto"
-            width="150"
-            color="secondary"
-            @click="seeSchedule(schedule)"
-        >Ver
-        </v-btn>
-        <v-btn
             class="mx-auto mx-md-0 mt-5 mt-md-0 ml-md-5"
             width="150"
             color="secondary"
