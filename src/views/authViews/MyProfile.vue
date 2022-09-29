@@ -56,7 +56,6 @@
             class="mr-3"
             width="150px"
             color="secondary"
-            block
             :disabled="!form.isValid"
             @click="saveProfileData"
         >
@@ -178,8 +177,16 @@ export default {
   },
   methods: {
     async saveProfileData() {
-      const { name, lastName, email } = this.user;
-      await this.authStore.update(this.user.id, { name, lastName, email });
+      const { name, lastName, email } = this.form.user;
+      await this.authStore.update(this.form.user.id, { name, lastName, email });
+      this.form = {
+        user: {
+          name: "",
+          lastName: "",
+          email: "",
+        },
+        isValid: false,
+      };
       if (this.authStore.error == false)
         this.successfulUpdate = true;
       this.isEdit = false;
