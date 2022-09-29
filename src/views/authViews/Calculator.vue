@@ -320,7 +320,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isCostData"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -336,7 +336,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isCostData"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -352,7 +352,7 @@
                     background-color="blue-grey lighten-5"
                     suffix="%"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isCostData"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -368,7 +368,7 @@
                     background-color="blue-grey lighten-5"
                     suffix="%"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isCostData"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -384,7 +384,7 @@
                     background-color="blue-grey lighten-5"
                     suffix="%"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isCostData"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -1008,6 +1008,11 @@ export default {
          v=> /^([0-9]([.,][0-9]{1,7})|[1-9]|[0-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
         ],
         isInterestRate:[
+         v => !!v || 'Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+        ],
+        isCostData:[
          v => !!v || 'Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
          v=> /^([0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
