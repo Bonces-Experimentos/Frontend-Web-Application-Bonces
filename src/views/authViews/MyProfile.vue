@@ -56,6 +56,8 @@
             class="mr-3"
             width="150px"
             color="secondary"
+            block
+            :disabled="!form.isValid"
             @click="saveProfileData"
         >
           Guardar
