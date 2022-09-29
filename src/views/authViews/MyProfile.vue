@@ -15,7 +15,7 @@
             <v-col class="col-8">
               <v-text-field
                   v-model="user.name"
-                  outlined
+                  solo
                   :rules="rules.name"
               ></v-text-field>
             </v-col>
@@ -27,7 +27,7 @@
             <v-col class="col-8">
               <v-text-field
                   v-model="user.lastName"
-                  outlined
+                  solo
                   :rules="rules.lastName"
               ></v-text-field>
             </v-col>
@@ -56,6 +56,7 @@
             class="mr-3"
             width="150px"
             color="secondary"
+            :disabled="!form.isValid"
             @click="saveProfileData()"
         >
           Guardar
@@ -178,10 +179,8 @@ export default {
     async saveProfileData() {
       const { name, lastName, email } = this.user;
       await this.authStore.update(this.user.id, { name, lastName, email });
-      if (this.authStore.error == false)
+      if (this.authStore.error === false)
         this.successfulUpdate = true;
-      else
-        this.successfulUpdate = false;
       this.isEdit = false;
       this.retrieveUser();
     },
