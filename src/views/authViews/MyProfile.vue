@@ -15,7 +15,7 @@
             <v-col class="col-8">
               <v-text-field
                   v-model="user.name"
-                  solo
+                  outlined
                   :rules="rules.name"
               ></v-text-field>
             </v-col>
@@ -27,7 +27,7 @@
             <v-col class="col-8">
               <v-text-field
                   v-model="user.lastName"
-                  solo
+                  outlined
                   :rules="rules.lastName"
               ></v-text-field>
             </v-col>
