@@ -301,7 +301,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="[rules.required,rules.isInt]"
+                    :rules="rules.isConstantInflation"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -1005,17 +1005,22 @@ export default {
         isNominalAndComercialValue:[
          v => !!v || 'Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9]|[0-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9]|[0-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
         ],
         isInterestRate:[
          v => !!v || 'Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
         ],
         isCostData:[
          v => !!v || 'Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+        ],
+        isConstantInflation:[
+         v => !!v || 'Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})||[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
         ],
       },
       showResults: false,
