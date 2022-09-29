@@ -5,6 +5,8 @@
         class="my-auto flex"
         :readonly="!isEdit"
         :disabled="!isEdit"
+        ref="form"
+        v-model="form.isValid"
     >
       <v-row>
         <v-col class="col-12 col-sm-10 col-lg-6 mx-auto">
