@@ -69,7 +69,7 @@
                     background-color="blue-grey lighten-5"
                     :prefix=toSymbol(this.form.scheduleData.currencyType)
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isNominalAndComercialValue"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -85,7 +85,7 @@
                     background-color="blue-grey lighten-5"
                     :prefix=toSymbol(this.form.scheduleData.currencyType)
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isNominalAndComercialValue"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -996,6 +996,11 @@ export default {
         isInt: v => Number.isInteger(Number(v)) || 'Entero requerido',
         isPositive: v => Number(v) > 0 || 'Número positivo requerido',
         isDate: v => /([1][9][8][5-9]|[1][9][9][0-9]|[2][0][0-4][0-9]|[2][0][5][0])-([0][1-9]|[1][0-2])-([0][1-9]|[1-2][0-9]|[3][0-1])/.test(v) || 'Fecha Invalida',
+        isNominalAndComercialValue:[
+         v => !!v || 'Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+        ],
       },
       showResults: false,
       timeout: 3000,
