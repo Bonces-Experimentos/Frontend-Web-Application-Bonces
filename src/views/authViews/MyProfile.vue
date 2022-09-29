@@ -42,6 +42,7 @@
               <v-text-field
                   v-model="user.email"
                   solo
+                  disabled
                   :rules="rules.email"
               ></v-text-field>
             </v-col>
