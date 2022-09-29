@@ -57,7 +57,7 @@
             width="150px"
             color="secondary"
             :disabled="!form.isValid"
-            @click="saveProfileData"
+            @click="saveProfileData()"
         >
           Guardar
         </v-btn>
@@ -177,17 +177,9 @@ export default {
   },
   methods: {
     async saveProfileData() {
-      const { name, lastName, email } = this.form.user;
-      await this.authStore.update(this.form.user.id, { name, lastName, email });
-      this.form = {
-        user: {
-          name: "",
-          lastName: "",
-          email: "",
-        },
-        isValid: false,
-      };
-      if (this.authStore.error == false)
+      const { name, lastName, email } = this.user;
+      await this.authStore.update(this.user.id, { name, lastName, email });
+      if (this.authStore.error === false)
         this.successfulUpdate = true;
       this.isEdit = false;
       this.retrieveUser();
