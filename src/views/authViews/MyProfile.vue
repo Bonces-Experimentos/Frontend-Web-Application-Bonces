@@ -177,7 +177,7 @@ export default {
     async saveProfileData() {
       const { name, lastName, email } = this.user;
       await this.authStore.update(this.user.id, { name, lastName, email });
-      if (this.authStore.error === false)
+      if (this.authStore.error == false)
         this.successfulUpdate = true;
       this.isEdit = false;
       this.retrieveUser();
