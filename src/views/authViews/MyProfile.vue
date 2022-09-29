@@ -56,7 +56,6 @@
             class="mr-3"
             width="150px"
             color="secondary"
-            :disabled="!form.isValid"
             @click="saveProfileData()"
         >
           Guardar
@@ -179,8 +178,10 @@ export default {
     async saveProfileData() {
       const { name, lastName, email } = this.user;
       await this.authStore.update(this.user.id, { name, lastName, email });
-      if (this.authStore.error === false)
+      if (this.authStore.error == false)
         this.successfulUpdate = true;
+      else
+        this.successfulUpdate = false;
       this.isEdit = false;
       this.retrieveUser();
     },
