@@ -229,7 +229,7 @@
                         color="accent"
                         background-color="blue-grey lighten-5"
                         solo
-                        :rules="[rules.required]"
+                        :rules="[rules.required,rules.isDate]"
                     ></v-text-field>
                   </template>
                   <v-date-picker
@@ -995,6 +995,7 @@ export default {
         required: v => !!v || 'Requerido',
         isInt: v => Number.isInteger(Number(v)) || 'Entero requerido',
         isPositive: v => Number(v) > 0 || 'Número positivo requerido',
+        isDate: v => /([1][9][8][5-9]|[1][9][9][0-9]|[2][0][0-4][0-9]|[2][0][5][0])-([0][1-9]|[1][0-2])-([0][1-9]|[1-2][0-9]|[3][0-1])/.test(v) || 'Fecha Invalida',
       },
       showResults: false,
       timeout: 3000,
