@@ -88,7 +88,7 @@
           :timeout="timeout"
           color="red accent-2"
       >
-        {{ "Error: El nombre y apellido o correo ya se encuentran registrados" }}
+        {{ "Error: Correo ya registrado" }}
 
         <template v-slot:action="{ attrs }">
           <v-btn
@@ -143,8 +143,10 @@ export default {
         password: [
           v => !!v || "Requerido",
           v => (v && v.length >= 8) || 'Mínimo 8 caracteres',
-          v => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(v) || 'La constraseña debe tener al menos una letra mayúscula y un número'
-        ],
+          v => /([0-9])/.test(v) || 'La constraseña debe tener al menos un numero',
+          v => /([A-Z])/.test(v) || 'La constraseña debe tener al menos una letra mayúscula',
+          v => /(?=.*[_a-z_])(?=.*[a-zA-Z])(?=.*\d)[_a-zA-Z_\d]{8,}$/.test(v) || 'La constraseña debe tener al menos una letra minúscula, letra mayúscula y un número',
+          ],
       },
       timeout: 3000,
       authStore: useAuthStore()

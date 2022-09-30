@@ -69,7 +69,7 @@
                     background-color="blue-grey lighten-5"
                     :prefix=toSymbol(this.form.scheduleData.currencyType)
                     solo
-                    :rules="rules.isNominalAndComercialValue"
+                    :rules="rules.isNominalValue"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -85,7 +85,7 @@
                     background-color="blue-grey lighten-5"
                     :prefix=toSymbol(this.form.scheduleData.currencyType)
                     solo
-                    :rules="rules.isNominalAndComercialValue"
+                    :rules="rules.isComercialValue"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -185,7 +185,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isAnnualDiscountRate"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -201,7 +201,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="[rules.required,rules.isPositive]"
+                    :rules="rules.isIncomeTax"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -320,7 +320,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="rules.isCostData"
+                    :rules="rules.isPrima"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -336,7 +336,7 @@
                     color="accent"
                     background-color="blue-grey lighten-5"
                     solo
-                    :rules="rules.isCostData"
+                    :rules="rules.isStructuring"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -352,7 +352,7 @@
                     background-color="blue-grey lighten-5"
                     suffix="%"
                     solo
-                    :rules="rules.isCostData"
+                    :rules="rules.isPlacement"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -368,7 +368,7 @@
                     background-color="blue-grey lighten-5"
                     suffix="%"
                     solo
-                    :rules="rules.isCostData"
+                    :rules="rules.isFlotation"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -384,7 +384,7 @@
                     background-color="blue-grey lighten-5"
                     suffix="%"
                     solo
-                    :rules="rules.isCostData"
+                    :rules="rules.isCavali"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -992,35 +992,70 @@ export default {
       },
 
       rules: {
-        required: v => !!v || 'Requerido',
+        required: v => !!v || 'Número Requerido',
         isInt: v => Number.isInteger(Number(v)) || 'Entero requerido',
         isPositive: v => Number(v) > 0 || 'Número positivo requerido',
         isDate: v => /([1][9][8][5-9]|[1][9][9][0-9]|[2][0][0-4][0-9]|[2][0][5][0])-([0][1-9]|[1][0-2])-([0][1-9]|[1-2][0-9]|[3][0-1])/.test(v) || 'Fecha Invalida',
         isYear: [
-         v => !!v || 'Requerido',
+         v => !!v || 'Número Requerido',
          v => Number.isInteger(Number(v)) || 'Entero requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([1-9]|[1-9][0-9]|[1][0][0])$/.test(v) || 'El numero de años no cumple con el rango establecido',
         ],
-        isNominalAndComercialValue:[
-         v => !!v || 'Requerido',
+        isNominalValue:[
+         v => !!v || 'Número Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9]|[0-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9]|[0-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El valor nominal no cumple con el rango establecido',
+        ],
+        isComercialValue:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9][0-9][0-9][0-9]([.,][0-9]{1,7})|[1-9]|[0-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9][0-9][0-9])$/.test(v) || 'El valor comercial no cumple con el rango establecido',
         ],
         isInterestRate:[
-         v => !!v || 'Requerido',
+         v => !!v || 'Número Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'La tasa de interes no cumple con el rango establecido',
         ],
-        isCostData:[
-         v => !!v || 'Requerido',
+        isAnnualDiscountRate:[
+         v => !!v || 'Número Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'La tasa anual de descuento no cumple con el rango establecido',
+        ],
+        isIncomeTax:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El impuesto a la renta no cumple con el rango establecido',
         ],
         isConstantInflation:[
-         v => !!v || 'Requerido',
+         v => !!v || 'Número Requerido',
          v => Number(v) > 0 || 'Número positivo requerido',
-         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})||[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$/.test(v) || 'El numero es invalido o excede el rango establecido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9]([.,][0-9]{1,7})|[1-9][0-9][0-9][0-9]([.,][0-9]{1,7})||[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$/.test(v) || 'La Inflación Constante no cumple con el rango establecido',
+        ],
+        isPrima:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'La Prima no cumple con el rango establecido',
+        ],
+        isStructuring:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'La Estructuración no cumple con el rango establecido',
+        ],
+        isPlacement:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'La Colocación no cumple con el rango establecido',
+        ],
+        isFlotation:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'La flotación no cumple con el rango establecido',
+        ],
+        isCavali:[
+         v => !!v || 'Número Requerido',
+         v => Number(v) > 0 || 'Número positivo requerido',
+         v=> /^([0-9]([.,][0-9]{1,7})|[1-9][0-9]([.,][0-9]{1,7})|[1-9]|[1-9][0-9])$/.test(v) || 'El Cavali no cumple con el rango establecido',
         ],
       },
       showResults: false,
