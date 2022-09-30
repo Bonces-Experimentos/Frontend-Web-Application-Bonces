@@ -126,19 +126,22 @@ export default {
         required: v => !!v || "Requerido",
         name: [
          v => !!v || "Requerido",
+         v => (v && v.length <= 25) || 'El nombre debe tener como máximo 25 caracteres',
          v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
          v => (v && v.length >= 2) || 'Ingrese más de un caracter',
          v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras'
         ],
         lastName:[
          v => !!v || "Requerido",
+         v => (v && v.length <= 25) || 'El apellido debe tener como máximo 25 caracteres',
          v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
          v => (v && v.length >= 2) || 'Ingrese más de un caracter',
          v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras'
         ],
         email: [
           v => !!v || "Requerido",
-          v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'Correo inválido.'
+          v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'Correo inválido',
+          v => (v && v.length <= 30) || 'El correo debe tener como máximo 30 caracteres'
         ],
         password: [
           v => !!v || "Requerido",
@@ -146,7 +149,8 @@ export default {
           v => /([0-9])/.test(v) || 'La constraseña debe tener al menos un numero',
           v => /([A-Z])/.test(v) || 'La constraseña debe tener al menos una letra mayúscula',
           v => /(?=.*[_a-z_])(?=.*[a-zA-Z])(?=.*\d)[_a-zA-Z_\d]{8,}$/.test(v) || 'La constraseña debe tener al menos una letra minúscula, letra mayúscula y un número',
-          ],
+          v => (v && v.length <= 20) || 'El contraseña debe tener como máximo 20 caracteres',
+        ],
       },
       timeout: 3000,
       authStore: useAuthStore()
