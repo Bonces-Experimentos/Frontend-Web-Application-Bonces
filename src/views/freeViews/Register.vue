@@ -126,17 +126,17 @@ export default {
         required: v => !!v || "Requerido",
         name: [
          v => !!v || "Requerido",
-         v => (v && v.length <= 25) || 'El nombre debe tener como máximo 25 caracteres',
+         v => (v && v.length <= 25) || 'El apellido debe tener como máximo 25 caracteres',
          v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
-         v => (v && v.length >= 2) || 'Ingrese más de un caracter',
-         v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras'
+         v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras',
+         v => /^[a-zA-Z]{2,25}/.test(v) || 'Nombre inválido'
         ],
         lastName:[
          v => !!v || "Requerido",
          v => (v && v.length <= 25) || 'El apellido debe tener como máximo 25 caracteres',
          v =>  !/^\s/.test(v)|| 'No ingrese espacios vacio al inicio',
-         v => (v && v.length >= 2) || 'Ingrese más de un caracter',
-         v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras'
+         v => /^([a-zA-Z ])*$/.test(v) || 'Solo ingrese letras',
+         v => /^[a-zA-Z]{2,25}/.test(v) || 'Apellido inválido'
         ],
         email: [
           v => !!v || "Requerido",
@@ -148,7 +148,6 @@ export default {
           v => (v && v.length >= 8) || 'Mínimo 8 caracteres',
           v => /([0-9])/.test(v) || 'La constraseña debe tener al menos un numero',
           v => /([A-Z])/.test(v) || 'La constraseña debe tener al menos una letra mayúscula',
-          v => /(?=.*[_a-z_])(?=.*[a-zA-Z])(?=.*\d)[_a-zA-Z_\d]{8,}$/.test(v) || 'La constraseña debe tener al menos una letra minúscula, letra mayúscula y un número',
           v => (v && v.length <= 20) || 'El contraseña debe tener como máximo 20 caracteres',
         ],
       },
